@@ -12,6 +12,9 @@ $(function () {
   // useful when saving the description in local storage?
   //
 
+  $("#hour-9").click(function() {
+    console.log("click");
+  })
   // document.getElementById("hour-9").addEventListener(click, saveButton);
 
   // function saveButton(this) {
@@ -34,4 +37,20 @@ $(function () {
   const formattedDate = currentDate.format('dddd, MMMM D');
   console.log(formattedDate);
   document.querySelector('#currentDay').textContent = formattedDate;
+
+
+  // const nthNumber = (number) => {
+  //   if (number > 3 && number < 21) return "th";
+  //   switch (number % 10) {
+  //     case 1: 
+  //       return "st";
+  //     case 2:
+  //       return "nd";
+  //     case 3:
+  //       return "rd";
+  //     default:
+  //       return "th";
+
+  //   }
+  // };
 });
