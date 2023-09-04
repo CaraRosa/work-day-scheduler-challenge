@@ -29,6 +29,7 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  // Use day.js library to set the day, month, and day of month that updates every day
   const currentDate = dayjs();
   const formattedDate = currentDate.format('dddd, MMMM D');
   console.log(formattedDate);
