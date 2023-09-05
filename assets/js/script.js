@@ -12,6 +12,11 @@ $(function () {
   // useful when saving the description in local storage?
   //
 
+   // TODO: Add code to get any user input that was saved in localStorage and set
+  // the values of the corresponding textarea elements. HINT: How can the id
+  // attribute of each time-block be used to do this?
+  //
+
   // if user clicks on save button, it saves user input to local storage
   $(".saveBtn").on("click", function() {
     var timeBlockId = $(this).parent().attr("id");
@@ -25,6 +30,7 @@ $(function () {
     
     console.log("click");
     loadEvents();
+    
   });
 
   function loadEvents() {
@@ -43,46 +49,39 @@ $(function () {
   // current hour in 24-hour time?
   //
 
-// gets the current date (year, month, day of month)
-// gets the time (hours, minutes, seconds)
+function blockColorChange(timeBlock) {
 
-$(document).ready( function() {
-  blockColorChange ();
-});
-var today = new Date();
-// var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-var currentTime = time;
-console.log(currentTime);
+  var userHour = parseInt($(timeBlock).attr("id").split("-")[1]);
 
-function blockColorChange() {
-  var userTime = parseInt($(this).attr("hour-9"));
-    if (currentTime > userTime) {
-      $(this).removeClass("future");
-      $(this).removeClass("present");
-      $(this).addClass("past");
-    } else if (currentTime < userTime) {
-      $(this).removeClass("present");
-      $(this).removeClass("past");
-      $(this).addClass("future");
+  //current time is declared
+  var currentHour = parseInt(dayjs().format("H"));
+  console.log("Current Hour", currentHour);
+
+  $(timeBlock).removeClass("past present future");
+
+    // conditional that sets the time blocks to past, present, or future
+    if (currentHour > userHour) {
+      $(timeBlock).removeClass("future");
+      $(timeBlock).removeClass("present");
+      $(timeBlock).addClass("past");
+    } else if (currentHour < userHour) {
+      $(timeBlock).removeClass("present");
+      $(timeBlock).removeClass("past");
+      $(timeBlock).addClass("future");
     } else {
-      $(this).removeClass("future");
-      $(this).removeClass("past");
-      $(this).removeClass("present");
+      $(timeBlock).removeClass("future");
+      $(timeBlock).removeClass("past");
+      $(timeBlock).addClass("present");
     }
-
-  };
-
-  
- 
+    
+  }
 
   
 
- 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
+  // calls the function for each time during initializing
+  $(".time-block").each(function () {
+    blockColorChange(this);
+  });
 
   
   // TODO: Add code to display the current date in the header of the page.
@@ -93,19 +92,5 @@ function blockColorChange() {
   document.querySelector('#currentDay').textContent = formattedDate;
 
 
-  // const nthNumber = (number) => {
-  //   if (number > 3 && number < 21) return "th";
-  //   switch (number % 10) {
-  //     case 1: 
-  //       return "st";
-  //     case 2:
-  //       return "nd";
-  //     case 3:
-  //       return "rd";
-  //     default:
-  //       return "th";
-
-  //   }
-  // };
-
 });
+
