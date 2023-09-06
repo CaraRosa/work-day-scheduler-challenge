@@ -4,6 +4,7 @@
 
 $(function () {
   loadEvents();
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -49,41 +50,36 @@ $(function () {
   // current hour in 24-hour time?
   //
 
-function blockColorChange(timeBlock) {
-
-  var userHour = parseInt($(timeBlock).attr("id").split("-")[1]);
-
-  //current time is declared
+function blockColorChange() {
+  // gets current hour of the day
   var currentHour = parseInt(dayjs().format("H"));
   console.log("Current Hour", currentHour);
 
-  $(timeBlock).removeClass("past present future");
+  // Loop through each time block
+  $(".time-block").each(function() {
+    var userHour = parseInt($(this).attr("id").split("-")[1]);
+    console.log("User Hour", userHour);
 
-    // conditional that sets the time blocks to past, present, or future
-    if (currentHour > userHour) {
-      $(timeBlock).removeClass("future");
-      $(timeBlock).removeClass("present");
-      $(timeBlock).addClass("past");
+    // remove classes past, present, future from all time blocks
+    $(this).removeClass("past present future");
+
+    if (currentHour === userHour) {
+      $(this).addClass("present");
     } else if (currentHour < userHour) {
-      $(timeBlock).removeClass("present");
-      $(timeBlock).removeClass("past");
-      $(timeBlock).addClass("future");
+      $(this).addClass("future");
     } else {
-      $(timeBlock).removeClass("future");
-      $(timeBlock).removeClass("past");
-      $(timeBlock).addClass("present");
+      $(this).addClass("past");
     }
-    
-  }
-
-  
-
-  // calls the function for each time during initializing
-  $(".time-block").each(function () {
-    blockColorChange(this);
   });
+}
 
-  
+// Call blockColorChange during initializing
+$(document).ready(function() {
+  blockColorChange();
+});
+
+
+
   // TODO: Add code to display the current date in the header of the page.
   // Use day.js library to set the day, month, and day of month that updates every day
   const currentDate = dayjs();
@@ -93,4 +89,3 @@ function blockColorChange(timeBlock) {
 
 
 });
-
