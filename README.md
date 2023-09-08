@@ -8,14 +8,14 @@ This webpage is designed with HTML, CSS, and JavaScript. The HTML is the body of
 
 ## Installation
 
-No installation is neccesary. This is the link to the webpage: [Link text](url).
+No installation is neccesary. This is the link to the webpage: [Work Day Scheduler](https://cararosa.github.io/work-day-scheduler-challenge/).
 A screenshot of the Scheduler in my browser is below:
 
 ![Alt text](./assets/images/WorkDaySchedulerWebpage.png)
 
 ## Credits
 
-My teacher pointed out that the current time and the user time that I am comparing was not compatible. Following his advice, I changed the id's values in each time block in order for the proper classes of past, present, and future to be applied. This code can be found in the index.html file.
+My teacher pointed out that the current time and the user time that I am comparing were not compatible. Following his advice, I changed the id's values in each time block in order for the proper classes of past, present, and future to be applied. This code can be found in the index.html file.
 
 ## License
 
