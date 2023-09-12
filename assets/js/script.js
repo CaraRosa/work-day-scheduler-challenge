@@ -14,8 +14,6 @@ $(function () {
     localStorage.setItem("event_" + hour, description);
     
     
-    loadEvents();
-    
   });
 
   // saves the text in local storage and displays it on the webpage in the appropriate time block
