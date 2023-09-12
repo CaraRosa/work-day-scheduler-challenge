@@ -15,7 +15,7 @@ A screenshot of the Scheduler in my browser is below:
 
 ## Credits
 
-My teacher pointed out that the current time and the user time that I am comparing were not compatible. Based on his advice, I changed the id's values in each time block in order for the proper classes of past, present, and future to be applied. This code can be found in the index.html file.
+My teacher pointed out that the current time and the user time that I am comparing were not compatible. Based on his advice, I changed the id's values in each time block in order for the proper classes of past, present, and future to be applied. This code can be found in the index.html file. Daniel, a TA, noticed that i was calling the function loadEvents() inside of a function. Therefore, it was overwriting the anonymous function and clearing the text inside the unsaved time blocks when a user saved input in another box. Daniel advised me to delete the loadEvents() function inside of the anonymous function. After deleting the function, the text did not clear when a user saved text in another time block. This code was deleted from the script.js file.
 
 ## License
 
